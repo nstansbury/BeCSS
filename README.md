@@ -7,13 +7,10 @@ One very well known software design pattern for writing abstracted, modular code
 Whilst there are are number of CSS patterns that attempt to address the issues with CSS class overuse and naming conventions, none of them really address the primary problem.
 
 ### The pattern
-"**Behavioural CSS**" addresses the overuse and naming issues around CSS classes as well their lack of semantic relevance, and ensures a clear separation of concerns in our code.  The core premise is simply to be as lazy as possible and maximise the use of the browsers CSS engine by following two simple rule:
+"**Behavioural CSS**" addresses the overuse and naming issues around CSS classes as well their lack of semantic relevance, but also ensures a clear separation of concerns in our code.  The core premise is simply to be as lazy as possible and maximise the use of the browsers' CSS engine by following two simple rules:
 
-
-### The rules
-This in practice, leads us to the two very simple rules in this pattern.
-1)  *JavaScript code should only ever describe the **behaviour and state** of the UI not its' visual appearance.*
-2)	*JavaScript code should never manipulate the class attribute on DOM elements*
+1)	*JavaScript code should only ever describe the **behaviour and state** of the UI not its' visual appearance.*
+2)	*JavaScript code should never manipulate the class attribute on DOM elements to infer state*
 
 ### Describing UI state & behaviour
 So the obvious question then becomes how do we apply CSS selectors to DOM elements without using CSS classes - the simple answer is we use DOM attributes instead.
