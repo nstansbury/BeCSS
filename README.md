@@ -1,13 +1,13 @@
-## *BeCSS* :: A lazy CSS code pattern for UI components
+## *BeCSS* :: A lazy, classless, CSS pattern for UI components
 
-_**Behavioural CSS**_ is a very simple pattern for writing and maintaining CSS style declarations specifically for modular UI components.
+**BeCSS** - or "_**Behavioural CSS**_" is a very simple pattern for writing and maintaining CSS style declarations specifically for modular UI components.
 
 One very well known software design pattern for writing abstracted, modular code is having a clear [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns).  Yet almost everywhere, we see JavaScript code on websites or web applications modifying a DOM elements' ```class``` attribute just to affect how it is rendered or presented, yet this clearly breaks a core premise of [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns) as we have tied our underlying JavaScript implementation to a CSS visual representation of our UI component.
 
 Whilst there are are number of CSS patterns that attempt to address the issues with CSS class overuse and naming conventions, none of them really address the primary problem.
 
 ### The pattern
-**Behavioural CSS** addresses the overuse and naming issues around CSS classes as well their lack of semantic relevance, and ensures a clear separation of concerns in our code.  The core premise is simply to be as lazy as possible and maximise the use of the browsers CSS engine by following two simple rule:
+"**Behavioural CSS**" addresses the overuse and naming issues around CSS classes as well their lack of semantic relevance, and ensures a clear separation of concerns in our code.  The core premise is simply to be as lazy as possible and maximise the use of the browsers CSS engine by following two simple rule:
 
 
 ### The rules
@@ -121,17 +121,20 @@ Notice how we have not said anything about how the ```doubled``` value is render
 
 
 ### *How I Learned to Stop Worrying and Love the DOM*
-A great many people, spend huge amounts of time worrying about storing, updating and then restoring the states of their apps and components.  When the states and current behaviours in each component are stored in your custom DOM attributes, guess what...?
+A great many people, spend huge amounts of time worrying about storing, updating and then restoring the states of their apps and components.  When the states and current behaviours in each component are stored in its own custom DOM attributes, you can just:
 ```javascript
 JSON.stringify(element.dataset);
 ```
-You'll get back a neat keyed JSON string of all your attributes and values that you can put where you want, and get back when you need to.
+You'll get back a neat keyed JSON string of all your custom attributes and values that you can put where you want, and get back when you need to.
 
 
 ### Become 'Classless'
-The only people that should be using CSS classes are the UI team applying actual themes, and whose class selectors rarely if ever encounter any app states or behaviour - except perhaps one as the root selector that might be:
+The only people that should really be using CSS classes are the UI team applying actual themes, whose class selectors rarely if ever encounter any app states or behaviour - except perhaps one as the root selector that might look like:
 ```css
 body[data-theme="mytheme"] ...
 ```
 
-So go ahead and try it, freeing yourself from the pain and anguish of messing around with CSS in your actual code is liberating, it forces you to consider the states and behaviours that you actually need to expose and ensures UI decisions today are as far as possible abstracted away from the underlying behaviour and state of the component itself.
+Although not new, this pattern makes for less code to write, less code to test, less code to bug fix, which makes code easier to read and easier to maintain.  Sadly there are no funky libraries to install, no hip frameworks to download, and no changes to your build process.  If there were, this would probably be a lot more exciting.
+
+But go ahead and try it, freeing yourself from the pain and anguish of messing around with CSS and classes in your actual JS code is liberating, it forces you to consider the states and behaviours that you actually need to expose and ensures UI decisions today are as far as possible abstracted away from the underlying behaviours and states of the components themselves.
+
